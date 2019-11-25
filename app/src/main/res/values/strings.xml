@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RoomMangamentApp</string>
+    <string name="description">Description</string>
+    <string name="size">Size</string>
+    <string name="price">Price</string>
+    <string name="room_name">Room Name</string>
+    <string name="save">Save</string>
+</resources>
