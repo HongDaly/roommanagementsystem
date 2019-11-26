@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -57,6 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if(c.moveToFirst()){
             while (c.moveToNext()){
                 Room room = new Room();
+                room.setId(c.getInt(c.getColumnIndex(DBConstant.ROOM_ID)));
                 room.setName(c.getString(c.getColumnIndex(DBConstant.ROOM_NAME)));
                 room.setPrice(c.getString(c.getColumnIndex(DBConstant.ROOM_PRICE)));
                 room.setSize(c.getString(c.getColumnIndex(DBConstant.ROOM_SIZE)));
@@ -70,6 +72,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         return  rooms;
+    }
+
+    public void deleteRoom(int id){
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete(DBConstant.ROOM_TABLE,"id=?",new String[]{String.valueOf(id)});
+        Log.d("delete","room"+id);
+        database.close();
     }
 
 }

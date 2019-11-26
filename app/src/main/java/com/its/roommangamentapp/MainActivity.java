@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         recyclerView = findViewById(R.id.rcv_room_list);
         dbHelper = new DBHelper(this);
-
 //      get All Room
         ArrayList<Room> rooms = dbHelper.getAllRoom();
         Log.d("Room", "onCreate: "+rooms.size());
@@ -52,5 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this,AddRoomActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        ArrayList<Room> rooms = dbHelper.getAllRoom();
+        roomAdapter.updateRoomList(rooms);
+        super.onResume();
     }
 }
