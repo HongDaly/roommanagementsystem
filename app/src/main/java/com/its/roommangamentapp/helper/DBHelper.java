@@ -80,5 +80,22 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("delete","room"+id);
         database.close();
     }
+    public void updateRoom(Room room){
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBConstant.ROOM_NAME,room.getName());
+        values.put(DBConstant.ROOM_PRICE,room.getPrice());
+        values.put(DBConstant.ROOM_SIZE,room.getSize());
+        values.put(DBConstant.ROOM_DESCRIPTION,room.getDes());
+        Log.d("room","updateRoom: "+room.getId());
+
+
+
+        database.update(DBConstant.ROOM_TABLE,values,"id=?",new String[]{String.valueOf(room.getId())});
+
+
+        database.close();
+
+    }
 
 }

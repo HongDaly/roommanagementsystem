@@ -5,4 +5,5 @@
     <string name="price">Price</string>
     <string name="room_name">Room Name</string>
     <string name="save">Save</string>
+    <string name="update">Update</string>
 </resources>

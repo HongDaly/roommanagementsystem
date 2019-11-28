@@ -1,6 +1,8 @@
 package com.its.roommangamentapp.model;
 
-public class Room{
+import java.io.Serializable;
+
+public class Room implements Serializable {
 
 
     private int id;
